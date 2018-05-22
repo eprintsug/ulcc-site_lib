@@ -55,7 +55,7 @@ sub get_value_label {
 sub ordervalue_basic {
     my ( $self, $value, $session, $langid ) = @_;
     my @name = $self->_get_name( $session, $value );
-    return @name; # =~ s/,/\t/g;
+    return $session->make_text($name);
 }
 
 sub render_single_value {
