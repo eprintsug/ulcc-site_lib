@@ -209,6 +209,8 @@ sub update_view_list
 	# hit the limit
 	if( $max_items && $count > $max_items )
 	{
+		$repo->log( "Browse view $view->{id} ($target) contains more than $max_items and has not been rendered.");
+
 		my $PAGE = $xml->create_element( "div",
 			class => "ep_view_page ep_view_page_view_$view->{id}"
 		);
