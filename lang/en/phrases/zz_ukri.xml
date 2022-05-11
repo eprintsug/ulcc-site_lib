@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE phrases SYSTEM "entities.dtd">
+<epp:phrases xmlns="http://www.w3.org/1999/xhtml" xmlns:epp="http://eprints.org/ep3/phrase" xmlns:epc="http://eprints.org/ep3/control">
+
+<epp:phrase id="eprint_fieldname_data_access_statement">Data Access Statement</epp:phrase>
+<epp:phrase id="eprint_fieldhelp_data_access_statement">Funder Open Access Policies (e.g. <a href="https://www.ukri.org/p    ublications/ukri-open-access-policy/" target="_blank">UKRI OA Policy</a>) require in-scope outputs to contain a Data Acce    ss Statement. This informs readers where the underlying research materials associated with a paper are available, and how     the research materials can be accessed.</epp:phrase>
+        
+<epp:phrase id="eprint_fieldname_ukri_date_sub">Date submitted (UKRI OA)</epp:phrase>
+<epp:phrase id="eprint_fieldhelp_ukri_date_sub">The date submitted, used to determine if the item is in scope of the UKRI OA policy.</epp:phrase>
+
+</epp:phrases>
