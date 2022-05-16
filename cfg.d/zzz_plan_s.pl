@@ -5,5 +5,5 @@ $c->{set_document_defaults} = sub
 
     $repository->call( "plan_s_set_document_defaults", $data, $repository, $eprint );
     
-    $data->{license} = "cc_by_4";
+    $data->{license} = "cc_by_4" if !defined $data->{license};
 };
