@@ -52,7 +52,8 @@ $c->{plugins}->{"Export::RSS2"}->{params}->{name} = "RSS";
 
 # Stop eprints from publicly displaying personal information in exports 
 
-push @{ $c->{fields}->{eprint} },  { name=>"contact_email", type=>"email", required=>0, can_clone=>0, export_as_xml=>0, replace_core=>1 };
+## Now in flabour
+#push @{ $c->{fields}->{eprint} },  { name=>"contact_email", type=>"email", required=>0, can_clone=>0, export_as_xml=>0, replace_core=>1 };
 
 #Fix ordering for creators_name
 #Sticking familyname and given name together ordering as if a single string results in nonsense eg:
