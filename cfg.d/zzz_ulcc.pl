@@ -210,6 +210,8 @@ $c->{validate_field} = sub
 
     package EPrints::MetaField::Int;
 
+    no warnings 'redefine';
+
     sub set_value
     {
         my( $self, $object, $value ) = @_;

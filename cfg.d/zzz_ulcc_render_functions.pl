@@ -42,6 +42,10 @@ $c->{render_compound_respect_export_as_xml} = sub {
         return $table;
     };
 
+{
+
+no warnings 'redefine';
+
 # Version of row render (for use with above only)
 sub render_single_value_row {
 
@@ -67,4 +71,6 @@ sub render_single_value_row {
 
     return $tr;
  
+}
+
 }
