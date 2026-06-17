@@ -2,6 +2,12 @@
 $c->{allow_web_signup} = 0;
 $c->{plugins}->{"Screen::Register"}->{actions}->{register}->{appears}->{key_tools} = undef;
 
+# disable certain Admin screens by default
+$c->{plugins}->{"Screen::Admin::Config"}->{params}->{disable} = 1;
+$c->{plugins}->{"Screen::Admin::Reload"}->{params}->{disable} = 1;
+$c->{plugins}->{"Screen::Admin::StorageManager"}->{params}->{disable} = 1;
+$c->{plugins}->{"Screen::Admin::UpdateDatabase"}->{params}->{disable} = 1;
+
 # removing the default order makes simple search revert to 'by relevance'
 $c->{search}->{simple}->{default_order} = undef;
 
