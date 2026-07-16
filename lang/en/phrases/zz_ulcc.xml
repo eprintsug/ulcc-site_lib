@@ -7,4 +7,8 @@
 <epp:phrase id="eprint_fieldname_contributors_id">ID</epp:phrase>
 <epp:phrase id="lib/metafield:join_MD5"> </epp:phrase>
 
+<epp:phrase id="eprint_fieldname_users">Browse View Creators</epp:phrase>
+<epp:phrase id="eprint_fieldname_users_name">Name</epp:phrase>
+<epp:phrase id="eprint_fieldname_users_id">ID</epp:phrase>
+
 </epp:phrases>
