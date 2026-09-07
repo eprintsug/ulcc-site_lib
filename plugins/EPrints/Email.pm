@@ -85,6 +85,12 @@ sub send_mail
 
         my $repository = $p{session}->get_repository;
 
+        if ( !EPrints::Utils::is_set($p{to_email}) && !EPrints::Utils::is_set($p{to_list}) )
+	    {
+            $p{session}->get_repository->log( "Failed to send mail with subject \"$p{subject}\" to $p{to_name}. No email address set.\n" );
+            return 0;
+        }
+
         if( defined $p{message} )
         {
                 my $msg = $p{message};
@@ -104,7 +110,7 @@ sub send_mail
         if( !defined $p{from_email} )
         {
                 $p{from_name} = $p{session}->phrase( "archive_name" );
-                $p{from_email} = $repository->get_conf( "adminemail" );
+                $p{from_email} = $repository->get_conf( "senderemail" ) ? $repository->get_conf( "senderemail" ) : $repository->get_conf( "adminemail" );
         }
 
         # If a name contains a comma we must quote it, because comma is the
@@ -280,8 +286,17 @@ sub build_email
 
         if( defined $p{replyto_email} )
         {
-                $mimemsg->attr( "Reply-to" => encode_mime_header( "$p{replyto_name}" )." <$p{replyto_email}>" );
+            $p{replyto_name} =~ s/<[^>]*>|^\s+|\s+$|//g; # Tidy up particularly unnamed users
+            $mimemsg->attr( "Reply-to" => encode_mime_header( "$p{replyto_name}" )." <$p{replyto_email}>" );
         }
+		elsif ( defined $repository->config( "senderemail" ) && $repository->config( "senderemail" ) ne $repository->config( "adminemail" ) )
+	    {	
+		    $mimemsg->attr( "Reply-to" => $p{session}->phrase( "archive_name" )." <".$repository->config( "adminemail" ).">" );
+			if ( $p{from_email} eq $repository->config( "senderemail" ) )
+			{
+				$mimemsg->replace( "From", $p{session}->phrase( "mail_from_name_no_reply" )." <$p{from_email}>" );
+			}
+		}
         $mimemsg->replace( "X-Mailer" => "EPrints http://eprints.org/" );
 
         if( EPrints::Utils::is_set( $p{to_list} ) )
