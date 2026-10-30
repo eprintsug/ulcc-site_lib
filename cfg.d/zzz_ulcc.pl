@@ -8,6 +8,13 @@ $c->{plugins}->{"Screen::Admin::Reload"}->{params}->{disable} = 1;
 $c->{plugins}->{"Screen::Admin::StorageManager"}->{params}->{disable} = 1;
 $c->{plugins}->{"Screen::Admin::UpdateDatabase"}->{params}->{disable} = 1;
 
+# Disable Upload from URL for security
+# https://github.com/eprints/eprints3.4/security/advisories/GHSA-w4m7-r88p-54xc
+$c->{plugins}->{"Screen::EPrint::UploadMethod::URL"}->{params}->{disable} = 1;
+
+# And disable YouTube import plugin
+$c->{plugins}->{"Screen::EPrint::UploadMethod::Youtube"}->{params}->{disable} = 1;
+
 # removing the default order makes simple search revert to 'by relevance'
 $c->{search}->{simple}->{default_order} = undef;
 
